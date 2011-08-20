@@ -1,6 +1,6 @@
 <?php
 /*
- * pop'n My List updator
+ * pop'n My List updater
  *
  * Copyright (C) 2011 by HiNa <hina@bouhime.com>. All rights reserved.
  *
