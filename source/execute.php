@@ -11,7 +11,7 @@
  * The license is also available at this URL:
  * https://github.com/fetus-hina/popnmylist/blob/master/LICENSE
  */
-require_once('bootstrap.php');
+require_once(__DIR__ . '/bootstrap.php');
 $config = new Pml_Config();
 
 Pml_Konami::update($config);
