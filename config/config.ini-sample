@@ -1,0 +1,7 @@
+[konami]
+konami_id   = "your-konami-id"
+password    = "your-konami-password"
+
+[mylist]
+id          = "your-poplin-id"
+password    = "your-poplin-password"
