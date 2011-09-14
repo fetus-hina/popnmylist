@@ -65,7 +65,7 @@ class Pml_Poplin_Client_Form {
         }
     }
 
-    private function parseFormDataNode(DOMNode $node) {
+    private function parseFormDataNode(DOMNode $node, $parent_name = null) {
         if($node->nodeType === XML_ELEMENT_NODE) {
             switch(strtolower($node->nodeName)) {
             case 'input':
@@ -77,6 +77,22 @@ class Pml_Poplin_Client_Form {
                     if($node->hasAttribute('checked')) {
                         $this->parameters[$name] = $node->getAttribute('value');
                     }
+                }
+                break;
+
+            case 'select':
+                $name = $node->getAttribute('name');
+                if($name != '') {
+                    for($child = $node->firstChild; $child; $child = $child->nextSibling) {
+                        $this->parseFormDataNode($child, $name);
+                    }
+                }
+                break;
+
+            case 'option':
+                if($parent_name != '' && $node->hasAttribute('selected')) {
+                    $value = $node->hasAttribute('value') ? $node->getAttribute('value') : trim($node->textContent);
+                    $this->parameters[$parent_name] = $value;
                 }
                 break;
             }
